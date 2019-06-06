@@ -7,7 +7,7 @@ app.use(bodyParser.json())
 app.use(
     bodyParser.urlencoded({ extended: true })
 )
-app.use(require('./router'));
+app.use(require('./routers'))
 
 // app.get('/', (req,res) => {
 //     res.json({info: 'Node.js, Express, and Postgres API'})
