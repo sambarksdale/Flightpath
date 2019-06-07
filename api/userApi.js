@@ -1,7 +1,11 @@
 const pool = require('../connection')
 
-getUsers = (req,res) => {
+getUsers = () => {
     return pool.query('SELECT * FROM users ORDER BY id ASC')
 }
 
-module.exports = { getUsers }
+getUserById = (id) => {
+    return pool.query(`SELECT * FROM users WHERE id = ${id}`)
+}
+
+module.exports = { getUsers, getUserById }

@@ -9,4 +9,11 @@ router.get('/users', (req,res) => {
         })
 })
 
+router.route('/users/:id').get((req,res) => {
+    userApi.getUserById(req.params.id)
+        .then(results => {
+            res.json(results.rows)
+        })
+})
+
 module.exports = router;
