@@ -6,7 +6,8 @@ app.use(bodyParser.json())
 app.use(
     bodyParser.urlencoded({ extended: true })
 )
-app.use(require('./routers'))
+// app.use(require('./routers'))
+app.get('/', (req,res) => {res.send("check me out")})
 
 const PORT = 8000
 app.listen(PORT, () => {
