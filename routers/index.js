@@ -5,5 +5,7 @@ router.get('/', (req,res) => {
     res.json({info: 'Node.js, Express, and Postgres API'})
 })
 
+router.use(require('./user'))
+
 
 module.exports = router;
