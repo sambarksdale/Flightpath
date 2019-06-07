@@ -6,10 +6,9 @@ app.use(bodyParser.json())
 app.use(
     bodyParser.urlencoded({ extended: true })
 )
-// app.use(require('./routers'))
-app.get('/', (req,res) => {res.send("check me out")})
+app.use(require('./routers'))
 
-const PORT = 8000
+const PORT = process.env.PORT || 8000
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}.`)
 })
