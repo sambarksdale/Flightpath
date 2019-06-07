@@ -5,6 +5,6 @@ const pool = new Pool({
     database: 'flightpath',
     password: 'barksdale',
     post: '5432'
-}) || new Client({connectionString: process.env.DATABASE_URL, ssl: true,});
+}) || new Pool({connectionString: process.env.DATABASE_URL, ssl: true,});
 
 module.exports = pool;
