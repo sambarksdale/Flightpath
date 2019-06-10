@@ -9,9 +9,9 @@ class Cricket_board extends Component {
                 <div>PLAYER 1</div>
                 <div>CRICKET</div>
                 <div>PLAYER 2</div>
-                <div>{this.props.state.p1["20-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p1["20-marks"] + ".png"}/> : null}</div>
+                <div>{this.props.state.p1[0].marks > 0 ? <img alt="" src={'images/' + this.props.state.p1[0].marks + ".png"}/> : null}</div>
                 <div>20</div>
-                <div>{this.props.state.p2["20-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p2["20-marks"] + ".png"}/> : null}</div>
+                {/* <div>{this.props.state.p2["20-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p2["20-marks"] + ".png"}/> : null}</div>
 
                 <div>{this.props.state.p1["nineteen-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p1["nineteen-marks"] + ".png"}/> : null}</div>
                 <div>19</div>
@@ -35,7 +35,7 @@ class Cricket_board extends Component {
                 
                 <div>{this.props.state.p1["bull-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p1["bull-marks"] + ".png"}/> : null}</div>
                 <div>bull</div>
-                <div>{this.props.state.p2["bull-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p2["bull-marks"] + ".png"}/> : null}</div>
+                <div>{this.props.state.p2["bull-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p2["bull-marks"] + ".png"}/> : null}</div> */}
             </div>
         )
     }

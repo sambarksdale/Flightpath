@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
+import {cricketGameDetail} from '../util'
 import Cricket_board from './Cricket_board'
 import Cricket_input from './Cricket_input'
 
 class Cricket extends Component {
     state = {
-        p1:[{id:20,marks_20:0,score_20:0},{id:19,marks_19:0,score:0},{id:18,marks_18:0,score_18:0}],
+        p1:[{id:20,marks:3,score:20},{id:19,marks:3,score:57},{id:18,marks:3,score:36},{id:17,marks:3,score:0},{id:16,marks:3,score:48},{id:15,marks:3,score:0},{id:25,marks:3,score:0}],
     }
 
-    handleP1Input = (index, multiplier, value)=>{
+    handleP1Input = ()=>{
         let array = {...this.state.p1}
         array[0].marks = array[0].marks += 1
         this.setState({p1:array}, ()=>{console.log(this.state.p1)})
@@ -16,21 +17,13 @@ class Cricket extends Component {
     }
 
     exportResults = ()=>{
-        let array = this.state.p1
-        let results = {}
-        for(let i = 0; i < array.length; i++){
-            let id= array[i].id
-            Object.keys(array[i]).forEach(e => {
-                // console.log(`key=${e}  value=${array[i][e]}`)
-                results[`${e}`] = array[i][e]
-            })
-        }
-        console.log(results)
+        cricketGameDetail(this.state.p1)
     }
+
     render(){
         return(
             <div>
-                {/* <Cricket_board state={this.state}/> */}
+                <Cricket_board state={this.state}/>
                 <Cricket_input handleInput={this.handleP1Input}/>
                 <button onClick={this.exportResults}>try</button>
             </div>

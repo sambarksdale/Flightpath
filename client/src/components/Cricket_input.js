@@ -8,7 +8,7 @@ class Cricket_input extends Component {
         player: "p1",
     }
     userInput = ()=>{
-        this.props.handleInput(this.state.multiplier,this.state.value) 
+        this.props.handleInput() 
     }
     render(){
         
