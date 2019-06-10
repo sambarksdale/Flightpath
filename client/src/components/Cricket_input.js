@@ -2,22 +2,30 @@ import React, {Component} from 'react'
 import './Cricket_input.css'
 
 class Cricket_input extends Component {
-
+    state = {
+        value: 0,
+        multiplier: 1,
+        player: "p1",
+    }
+    userInput = ()=>{
+        this.props.handleInput(this.state.multiplier,this.state.value) 
+    }
     render(){
+        
         return(
             <div className="input-container">
-                <div>20</div>
-                <div>19</div>
-                <div>18</div>
-                <div>17</div>
-                <div>16</div>
-                <div>15</div>
-                <div>Bull</div>
+                <div onClick={()=>{this.setState({value: 20})}}>20</div>
+                <div onClick={()=>{this.setState({value: 19})}}>19</div>
+                <div onClick={()=>{this.setState({value: 18})}}>18</div>
+                <div onClick={()=>{this.setState({value: 17})}}>17</div>
+                <div onClick={()=>{this.setState({value: 16})}}>16</div>
+                <div onClick={()=>{this.setState({value: 15})}}>15</div>
+                <div >Bull</div>
                 <div>0</div>
                 <div>undo</div>
                 <div>2x</div>
                 <div>3x</div>
-                <div>submit</div>
+                <div onClick={this.userInput}>submit</div>
             </div>
         )
     }
