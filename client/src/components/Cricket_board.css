@@ -1,0 +1,11 @@
+.board-container {
+    margin: 0 auto;
+    width: 800px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3px
+}
+
+div {
+    border: 1px solid black
+}
