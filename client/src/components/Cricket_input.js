@@ -3,18 +3,28 @@ import './Cricket_input.css'
 
 class Cricket_input extends Component {
     state = {
-        value: 0,
         multiplier: 1,
-        darts_thrown: 0
+        dartCount: 0,
     }
 
-     
+    incramentDartCount = ()=>{
+        let dartCount = this.state.dartCount += 1
+        this.setState({dartCount})
+    }
 
     userInput = (value)=>{
+        if(this.state.dartCount === 3){return}
+        this.incramentDartCount()
         let index = this.getIndex(value)
-        this.props.handleInput(index, this.state.multiplier, this.state.value) 
+        this.props.handleInput(index, this.state.multiplier, value)
+        this.props.dartsThrown(this.state.multiplier, value, this.state.dartCount)
         this.setState({value:0,multiplier:1});
     }
+
+    passTurn = ()=>{
+        
+    }
+
     getIndex = (value)=>{
         switch(value){
             case 20:
@@ -55,7 +65,7 @@ class Cricket_input extends Component {
                 <div>undo</div>
                 <div onClick={()=>{this.setState({multiplier: 2})}}>2x</div>
                 <div onClick={()=>{this.setState({multiplier: 3})}}>3x</div>
-                <div onClick={this.userInput}>submit</div>
+                <div>pass turn</div>
             </div>
         )
     }
