@@ -5,15 +5,23 @@ import Cricket_input from './Cricket_input'
 
 class Cricket extends Component {
     state = {
-        p1:[{id:20,marks:3,score:20},{id:19,marks:3,score:57},{id:18,marks:3,score:36},{id:17,marks:3,score:0},{id:16,marks:3,score:48},{id:15,marks:3,score:0},{id:25,marks:3,score:0}],
+        p1:[{id:20,marks:2,score:0},{id:19,marks:1,score:57},{id:18,marks:1,score:36},{id:17,marks:1,score:0},{id:16,marks:1,score:48},{id:15,marks:1,score:0},{id:25,marks:1,score:0}],
+        p2:[{id:20,marks:1,score:20},{id:19,marks:3,score:57},{id:18,marks:3,score:36},{id:17,marks:3,score:0},{id:16,marks:3,score:48},{id:15,marks:3,score:0},{id:25,marks:3,score:0}],
+        dart1: "2x 20",
+        dart2: "15",
+        dart3: "3x 19"
     }
 
-    handleP1Input = ()=>{
+    handleP1Input = (index, multiplier, value)=>{
         let array = {...this.state.p1}
-        array[0].marks = array[0].marks += 1
-        this.setState({p1:array}, ()=>{console.log(this.state.p1)})
-
-        
+        for(let i = multiplier; i > 0; i--){
+            if(array[index].marks < 3){
+                array[index].marks = array[index].marks += 1
+            } else if(array[index].marks === 3 && this.state.p2[index].marks !== 3){
+                array[index].score = array[index].score += value
+            } else;
+        }
+        this.setState({p1:array})
     }
 
     exportResults = ()=>{

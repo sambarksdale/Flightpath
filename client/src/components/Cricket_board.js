@@ -11,31 +11,36 @@ class Cricket_board extends Component {
                 <div>PLAYER 2</div>
                 <div>{this.props.state.p1[0].marks > 0 ? <img alt="" src={'images/' + this.props.state.p1[0].marks + ".png"}/> : null}</div>
                 <div>20</div>
-                {/* <div>{this.props.state.p2["20-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p2["20-marks"] + ".png"}/> : null}</div>
+                <div>{this.props.state.p2[0].marks > 0 ? <img alt="" src={'images/' + this.props.state.p2[0].marks + ".png"}/> : null}</div>
 
-                <div>{this.props.state.p1["nineteen-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p1["nineteen-marks"] + ".png"}/> : null}</div>
+                <div>{this.props.state.p1[1].marks > 0 ? <img alt="" src={'images/' + this.props.state.p1[1].marks + ".png"}/> : null}</div>
                 <div>19</div>
-                <div>{this.props.state.p2["nineteen-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p2["nineteen-marks"] + ".png"}/> : null}</div>
+                <div>{this.props.state.p2[1].marks > 0 ? <img alt="" src={'images/' + this.props.state.p2[1].marks + ".png"}/> : null}</div>
 
-                <div>{this.props.state.p1["eighteen-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p1["eighteen-marks"] + ".png"}/> : null}</div>
+                <div>{this.props.state.p1[2].marks > 0 ? <img alt="" src={'images/' + this.props.state.p1[2].marks + ".png"}/> : null}</div>
                 <div>18</div>
-                <div>{this.props.state.p2["eighteen-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p2["eighteen-marks"] + ".png"}/> : null}</div>
+                <div>{this.props.state.p2[2].marks > 0 ? <img alt="" src={'images/' + this.props.state.p2[2].marks + ".png"}/> : null}</div>
 
-                <div>{this.props.state.p1["seventeen-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p1["seventeen-marks"] + ".png"}/> : null}</div>
+                <div>{this.props.state.p1[3].marks > 0 ? <img alt="" src={'images/' + this.props.state.p1[3].marks + ".png"}/> : null}</div>
                 <div>17</div>
-                <div>{this.props.state.p2["seventeen-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p2["seventeen-marks"] + ".png"}/> : null}</div>
+                <div>{this.props.state.p2[3].marks > 0 ? <img alt="" src={'images/' + this.props.state.p2[3].marks + ".png"}/> : null}</div>
 
-                <div>{this.props.state.p1["sixteen-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p1["sixteen-marks"] + ".png"}/> : null}</div>
+                <div>{this.props.state.p1[4].marks > 0 ? <img alt="" src={'images/' + this.props.state.p1[4].marks + ".png"}/> : null}</div>
                 <div>16</div>
-                <div>{this.props.state.p2["sixteen-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p2["sixteen-marks"] + ".png"}/> : null}</div>
+                <div>{this.props.state.p2[4].marks > 0 ? <img alt="" src={'images/' + this.props.state.p2[4].marks + ".png"}/> : null}</div>
 
-                <div>{this.props.state.p1["fifteen-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p1["fifteen-marks"] + ".png"}/> : null}</div>
+                <div>{this.props.state.p1[5].marks > 0 ? <img alt="" src={'images/' + this.props.state.p1[5].marks + ".png"}/> : null}</div>
                 <div>15</div>
-                <div>{this.props.state.p2["fifteen-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p2["fifteen-marks"] + ".png"}/> : null}</div>
+                <div>{this.props.state.p2[5].marks > 0 ? <img alt="" src={'images/' + this.props.state.p2[5].marks + ".png"}/> : null}</div>
                 
-                <div>{this.props.state.p1["bull-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p1["bull-marks"] + ".png"}/> : null}</div>
+                <div>{this.props.state.p1[6].marks > 0 ? <img alt="" src={'images/' + this.props.state.p1[6].marks + ".png"}/> : null}</div>
                 <div>bull</div>
-                <div>{this.props.state.p2["bull-marks"] > 0 ? <img alt="" src={'images/' + this.props.state.p2["bull-marks"] + ".png"}/> : null}</div> */}
+                <div>{this.props.state.p2[6].marks > 0 ? <img alt="" src={'images/' + this.props.state.p2[6].marks + ".png"}/> : null}</div>
+
+                <div>{this.props.state.dart1}</div>
+                <div>{this.props.state.dart2}</div>
+                <div>{this.props.state.dart3}</div>
+
             </div>
         )
     }
