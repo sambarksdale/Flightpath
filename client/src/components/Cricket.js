@@ -7,9 +7,9 @@ class Cricket extends Component {
     state = {
         p1:[{id:20,marks:2,score:0},{id:19,marks:1,score:57},{id:18,marks:1,score:36},{id:17,marks:1,score:0},{id:16,marks:1,score:48},{id:15,marks:1,score:0},{id:25,marks:1,score:0}],
         p2:[{id:20,marks:1,score:20},{id:19,marks:3,score:57},{id:18,marks:3,score:36},{id:17,marks:3,score:0},{id:16,marks:3,score:48},{id:15,marks:3,score:0},{id:25,marks:3,score:0}],
-        dart1: "2x 20",
-        dart2: "15",
-        dart3: "3x 19"
+        dart1: "",
+        dart2: "",
+        dart3: ""
     }
 
     handleP1Input = (index, multiplier, value)=>{
@@ -17,12 +17,14 @@ class Cricket extends Component {
         for(let i = multiplier; i > 0; i--){
             if(array[index].marks < 3){
                 array[index].marks = array[index].marks += 1
-            } else if(array[index].marks === 3 && this.state.p2[index].marks !== 3){
-                array[index].score = array[index].score += value
-            } else;
+                } else if(array[index].marks === 3 && this.state.p2[index].marks !== 3){
+                    array[index].score = array[index].score += value
+                    } else;
         }
         this.setState({p1:array})
     }
+
+    
 
     exportResults = ()=>{
         cricketGameDetail(this.state.p1)
@@ -32,7 +34,7 @@ class Cricket extends Component {
         return(
             <div>
                 <Cricket_board state={this.state}/>
-                <Cricket_input handleInput={this.handleP1Input}/>
+                <Cricket_input handleInput={this.handleP1Input} state={this.state}/>
                 <button onClick={this.exportResults}>try</button>
             </div>
         )

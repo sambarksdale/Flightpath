@@ -5,9 +5,13 @@ class Cricket_input extends Component {
     state = {
         value: 0,
         multiplier: 1,
+        darts_thrown: 0
     }
-    userInput = ()=>{
-        let index = this.getIndex(this.state.value)
+
+     
+
+    userInput = (value)=>{
+        let index = this.getIndex(value)
         this.props.handleInput(index, this.state.multiplier, this.state.value) 
         this.setState({value:0,multiplier:1});
     }
@@ -40,13 +44,13 @@ class Cricket_input extends Component {
     render(){
         return(
             <div className="input-container">
-                <div onClick={()=>{this.setState({value: 20})}}>20</div>
-                <div onClick={()=>{this.setState({value: 19})}}>19</div>
-                <div onClick={()=>{this.setState({value: 18})}}>18</div>
-                <div onClick={()=>{this.setState({value: 17})}}>17</div>
-                <div onClick={()=>{this.setState({value: 16})}}>16</div>
-                <div onClick={()=>{this.setState({value: 15})}}>15</div>
-                <div onClick={()=>{this.setState({value: 25})}}>Bull</div>
+                <div onClick={()=>{this.userInput(20)}}>20</div>
+                <div onClick={()=>{this.userInput(19)}}>19</div>
+                <div onClick={()=>{this.userInput(18)}}>18</div>
+                <div onClick={()=>{this.userInput(17)}}>17</div>
+                <div onClick={()=>{this.userInput(16)}}>16</div>
+                <div onClick={()=>{this.userInput(15)}}>15</div>
+                <div onClick={()=>{this.userInput(25)}}>Bull</div>
                 <div>0</div>
                 <div>undo</div>
                 <div onClick={()=>{this.setState({multiplier: 2})}}>2x</div>
