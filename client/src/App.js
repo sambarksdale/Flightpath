@@ -35,8 +35,8 @@ class App extends (Component) {
           <button onClick={this.getUsers}>get users</button>
           <button onClick={this.getRandomNumber}>random_number</button>
           <Switch>
-            <Route exact path="/cricket" render={CricketGame}/>
-            <Route exact path="/user/:id" render={UserProfile}/>
+            <Route path="/cricket" render={CricketGame}/>
+            <Route path="/user/:id" render={UserProfile}/>
           </Switch>
         </div>
       </Router>
