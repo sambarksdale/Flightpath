@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {cricketGameDetail} from '../util'
-import Cricket_board from './Cricket_board'
-import Cricket_input from './Cricket_input'
+import CricketBoard from './CricketBoard'
+import CricketInput from './CricketInput'
 
 class Cricket extends Component {
     state = {
@@ -24,17 +24,6 @@ class Cricket extends Component {
         }
         this.setState({p1:array})
     }
-
-    // updateGameState = (index, multiplier, value)=>{
-    //     let array = {...this.state.p1}
-    //     for(let i = multiplier; i > 0; i--){
-    //         if(array[index].marks < 3){
-    //             array[index].marks = array[index].marks += 1
-    //             } else if(array[index].marks === 3 && this.state.p2[index].marks !== 3){
-    //                 array[index].score = array[index].score += value
-    //                 } else;
-    //     }
-    // }
 
     dartsThrown = (multiplier, value, dartCount)=>{
         let dart = ""
@@ -60,8 +49,8 @@ class Cricket extends Component {
     render(){
         return(
             <div>
-                <Cricket_board state={this.state}/>
-                <Cricket_input handleInput={this.handleInput} dartsThrown={this.dartsThrown} state={this.state}/>
+                <CricketBoard state={this.state}/>
+                <CricketInput handleInput={this.handleInput} dartsThrown={this.dartsThrown} state={this.state}/>
                 <button onClick={this.exportResults}>try</button>
             </div>
         )

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import './Cricket_board.css'
+import './CricketBoard.css'
 
-class Cricket_board extends Component {
+class CricketBoard extends Component {
 
     render(){
         return(
@@ -46,4 +46,4 @@ class Cricket_board extends Component {
     }
 }
 
-export default Cricket_board;
+export default CricketBoard;

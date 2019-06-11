@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import axios from 'axios'
 import Cricket from './components/Cricket'
@@ -25,12 +26,16 @@ class App extends (Component) {
 
   render(){
     return (
-      <div className="App">
-        <h1>hellow world</h1>
-        <button onClick={this.getUsers}>get users</button>
-        <button onClick={this.getRandomNumber}>random_number</button>
-        <Cricket/>
-      </div>
+      <Router>
+        <div className="App">
+          <h1>hellow world</h1>
+          <button onClick={this.getUsers}>get users</button>
+          <button onClick={this.getRandomNumber}>random_number</button>
+          <Switch>
+            <Cricket/>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

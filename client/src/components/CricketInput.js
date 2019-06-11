@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import './Cricket_input.css'
+import './CricketInput.css'
 
-class Cricket_input extends Component {
+class CricketInput extends Component {
     state = {
         multiplier: 1,
         dartCount: 0,
@@ -22,33 +22,32 @@ class Cricket_input extends Component {
     }
 
     passTurn = ()=>{
-        
+
     }
 
     getIndex = (value)=>{
         switch(value){
             case 20:
                 return 0
-                break;
+                // break;
             case 19:
                 return 1
-                break;
+                // break;
             case 18:
                 return 2
-                break;
+                // break;
             case 17:
                 return 3
-                break;
+                // break;
             case 16:
                 return 4
-                break;
+                // break;
             case 15:
                 return 5
-                break;
+                // break;
             case 25:
                 return 6
-                break;
-
+                // break;
         } 
     }
     render(){
@@ -71,4 +70,4 @@ class Cricket_input extends Component {
     }
 }
 
-export default Cricket_input;
+export default CricketInput;
