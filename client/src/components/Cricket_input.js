@@ -9,6 +9,7 @@ class Cricket_input extends Component {
     userInput = ()=>{
         let index = this.getIndex(this.state.value)
         this.props.handleInput(index, this.state.multiplier, this.state.value) 
+        this.setState({value:0,multiplier:1});
     }
     getIndex = (value)=>{
         switch(value){
