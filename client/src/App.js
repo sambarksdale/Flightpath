@@ -34,10 +34,12 @@ class App extends (Component) {
           <h1>hellow world</h1>
           <button onClick={this.getUsers}>get users</button>
           <button onClick={this.getRandomNumber}>random_number</button>
-          <Switch>
-            <Route exact path="/" render={CricketGame}/>
-            <Route exact path="/user/:id" render={UserProfile}/>
-          </Switch>
+          <div>
+            <Switch>
+              <Route exact path="/" render={CricketGame}/>
+              <Route exact path="/user/:id" render={UserProfile}/>
+            </Switch>
+          </div>
         </div>
       </Router>
     );
