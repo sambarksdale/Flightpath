@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import axios from 'axios'
 import Cricket from './components/Cricket'
+import User from './components/User'
 
 class App extends (Component) {
 
@@ -32,7 +33,8 @@ class App extends (Component) {
           <button onClick={this.getUsers}>get users</button>
           <button onClick={this.getRandomNumber}>random_number</button>
           <Switch>
-            <Cricket/>
+            <Route exact path="/cricket" component={Cricket}/>
+            <Route exact path="/user/:id" component={User}/>
           </Switch>
         </div>
       </Router>
