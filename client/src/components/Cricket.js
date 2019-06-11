@@ -37,7 +37,6 @@ class Cricket extends Component {
     // }
 
     dartsThrown = (multiplier, value, dartCount)=>{
-        console.log(multiplier)
         let dart = ""
         if(multiplier === 1){dart = value}else{dart = `${multiplier}x ${value}`}
         switch (dartCount) {

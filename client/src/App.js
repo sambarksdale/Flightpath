@@ -5,6 +5,14 @@ import Cricket from './components/Cricket'
 
 class App extends (Component) {
 
+  state = {
+    p1_id: 1,
+    p1_userName: "sam barksdale",
+    p2_id: 2,
+    p2_userName: "wayne barksdlae",
+    gameType: "cricket"
+  }
+
   getUsers = () => {
     return axios.get('/users')
       .then(users => console.log(users.data))
