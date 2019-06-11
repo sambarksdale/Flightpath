@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import axios from 'axios'
-import Cricket from './components/Cricket'
-import User from './components/User'
+import Cricket from './components/Cricket.js'
+import User from './components/User.js'
 
-class App extends (Component) {
+class App extends Component {
 
   state = {
     p1_id: 1,
