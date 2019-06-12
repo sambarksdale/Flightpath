@@ -11,7 +11,7 @@ export function getRandomNumber(){
 }
 
 export function cricketGameDetail(data){
-  return axios.post('./cricket/details', data)
+  return axios.post('/cricket/details', data)
 }
 
 export function getGamesByUser(id){
