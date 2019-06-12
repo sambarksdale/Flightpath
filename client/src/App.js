@@ -39,7 +39,7 @@ class App extends Component {
           <div>
             <Switch>
               <Route exact path="/cricket" render={CricketGame}/>
-              <Route exact path="/users/:id" render={UserProfile}/>
+              <Route exact path="/user/:id" render={UserProfile}/>
             </Switch>
           </div>
         </div>
