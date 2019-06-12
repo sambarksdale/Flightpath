@@ -27,7 +27,9 @@ class App extends Component {
 
   render(){
     const CricketGame = ()=>(<Cricket/>)
-    const UserProfile = ()=>(<User/>)
+    const UserProfile = (props)=>(<User
+      user={props}
+    />)
     return (
       <Router>
         <div className="App">
@@ -36,8 +38,8 @@ class App extends Component {
           <button onClick={this.getRandomNumber}>random_number</button>
           <div>
             <Switch>
-              <Route exact path="/" render={CricketGame}/>
-              <Route exact path="/user/:id" render={UserProfile}/>
+              <Route exact path="/cricket" render={CricketGame}/>
+              <Route exact path="/users/:id" render={UserProfile}/>
             </Switch>
           </div>
         </div>
