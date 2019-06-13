@@ -15,6 +15,16 @@ export function cricketGameDetail(data){
 }
 
 export function getGamesByUser(id){
-  console.log("get games by user")
   return axios.post('/games', id)  
 }
+
+export function authenticateUser(user){
+  return axios.post('/users/auth',user)
+    .then(user=>user.data)
+}
+
+export function newUser(user){
+  return axios.post('/users', user)
+    .then(user=>user.data)
+}
+

@@ -13,8 +13,9 @@ CREATE TABLE game (
     p1_id INT NOT NULL,
     p2_username VARCHAR NOT NULL,
     p2_id INT NOT NULL,
-    winner VARCHAR NOT NULL
+    result VARCHAR NOT NULL
 );
+
 
 CREATE TABLE cricket_details (
     id SERIAL PRIMARY KEY,
@@ -38,11 +39,13 @@ CREATE TABLE cricket_details (
 );
 
 INSERT INTO users (username, password)
-VALUES ('sam barksdale', 'password'),('wayne barksdale', 'password'),('will', 'password');
+VALUES ('Sam', 'password'),('Will', 'password'),('J-hutch', 'password'),('Nick', 'password');
 
-INSERT INTO game (game_type, p1_username, p1_id, p2_username, p2_id, winner)
-VALUES ('cricket', 'sam barksdale', '1', 'wayne barksdale', '2', 'sam barksdale'),
-('cricket', 'sam barksdale', '1', 'will', '3', 'sam barksdale');
+INSERT INTO game (game_type, p1_username, p1_id, p2_username, p2_id, result)
+VALUES ('cricket', 'Sam', '1', 'Will', '2', 'Win'),
+       ('cricket', 'Will', '2', 'Sam', '1', 'Loss'),
+       ('cricket', 'Sam', '1', 'J-hutch', '3', 'Win'),
+       ('cricket', 'Nick', '4', 'Sam', '1', 'Loss');
 
 INSERT INTO cricket_details (user_id, game_id, darts, marks20, score20, marks19, score19, marks18, score18, marks17, score17, marks16, score16, marks15, score15, marks25, score25)
 VALUES ('1','1','7','3','0','3','0','3','0','3','0','3','0','3','0','3','0'),
@@ -51,5 +54,6 @@ VALUES ('1','1','7','3','0','3','0','3','0','3','0','3','0','3','0','3','0'),
        ('3','2','6','1','0','1','0','1','0','1','0','1','0','1','0','1','0');
 
 
-INSERT INTO game (game_type, p1_username, p1_id, p2_username, p2_id, winner)
-VALUES ('cricket', 'will', '3', 'sam barksdale', '1', 'will');
+SELECT username AS opponent, game_type, result, game_id FROM (SELECT user_id, game_type, result, game_id FROM (SELECT * FROM game WHERE p1_id = 1 OR p2_id = 1) AS G INNER JOIN cricket_details AS CD ON G.id = CD.game_id WHERE user_id <> 1) AS T INNER JOIN users AS U ON U.id = T.user_id;
+
+
