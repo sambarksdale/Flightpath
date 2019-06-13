@@ -16,12 +16,21 @@ class CricketInput extends Component {
         if(this.state.dartCount === 3){return}
         this.incramentDartCount()
         let index = this.getIndex(value)
-        this.props.handleInput(index, this.state.multiplier, value)
+        this.props.state.isTurn ? this.props.p1Input(index, this.state.multiplier, value) : this.props.p2Input(index, this.state.multiplier, value)
+        // this.props.handleInput(index, this.state.multiplier, value)
         this.props.dartsThrown(this.state.multiplier, value, this.state.dartCount)
-        this.setState({value:0,multiplier:1});
+        this.setState({value:0,multiplier:1},()=>{this.props.takeSnapshot()});
     }
 
     passTurn = ()=>{
+        this.props.changeTurn()
+        this.setState({dartCount:0})
+    }
+
+    undo = ()=>{
+        this.props.undoTurn()
+        let dartCount = this.state.dartCount -= 1
+        this.setState({dartCount})
 
     }
 
@@ -61,10 +70,10 @@ class CricketInput extends Component {
                 <div onClick={()=>{this.userInput(15)}}>15</div>
                 <div onClick={()=>{this.userInput(25)}}>Bull</div>
                 <div>0</div>
-                <div>undo</div>
+                <div onClick={this.undo}>undo</div>
                 <div onClick={()=>{this.setState({multiplier: 2})}}>2x</div>
                 <div onClick={()=>{this.setState({multiplier: 3})}}>3x</div>
-                <div>pass turn</div>
+                <div onClick={this.passTurn}>pass turn</div>
             </div>
         )
     }

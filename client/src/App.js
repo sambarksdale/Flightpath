@@ -19,7 +19,8 @@ class App extends Component {
       p2_id: "",
       loggedIn: false
     },
-    gametype: ""
+    gametype: "",
+    turnLog: []
   }
 
   userLogin = (data,player)=>{
@@ -63,10 +64,18 @@ class App extends Component {
     this.setState({player2})
   }
 
+  updateTurnLog = (snapshot)=>{
+    let turns = []
+    turns = this.state.turnLog
+    turns.push(snapshot)
+    this.setState({turnLog:turns})
+  }
+
 
   render(){
     const CricketGame = ()=>(<Cricket
       state={this.state}
+      updateTurnLog={this.updateTurnLog}
     />)
     const UserProfile = (props)=>(<User
       user={props}

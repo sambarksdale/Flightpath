@@ -1,7 +1,19 @@
 .board-container {
     margin: 0 auto;
+    text-align: center;
     width: 800px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 3px
+}
+
+.board-container div{
+    border: 1px solid black;
+    height: 50px;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.board-container img{
+    height: 50px;
 }

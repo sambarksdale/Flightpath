@@ -6,9 +6,9 @@ class CricketBoard extends Component {
     render(){
         return(
             <div className="board-container">
-                <div>PLAYER 1</div>
+                <div id="p1-name-plate">PLAYER 1</div>
                 <div>CRICKET</div>
-                <div>PLAYER 2</div>
+                <div id="p2-name-plate">PLAYER 2</div>
                 <div>{this.props.state.p1[0].marks > 0 ? <img alt="" src={'images/' + this.props.state.p1[0].marks + ".png"}/> : null}</div>
                 <div>20</div>
                 <div>{this.props.state.p2[0].marks > 0 ? <img alt="" src={'images/' + this.props.state.p2[0].marks + ".png"}/> : null}</div>
