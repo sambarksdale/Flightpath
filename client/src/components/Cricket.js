@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {cricketGameDetail} from '../util'
+import {cricketGameDetail, newGame} from '../util'
 import CricketBoard from './CricketBoard'
 import CricketInput from './CricketInput'
 
@@ -12,6 +12,7 @@ class Cricket extends Component {
         dart3: "",
         dartCout: 0,
         isTurn: true,
+        result: 1
     }
 
     componentDidMount(){
@@ -28,6 +29,7 @@ class Cricket extends Component {
             document.getElementById("p1-name-plate").style.background = "white"
             document.getElementById("p2-name-plate").style.background = "red"
         }
+        this.checkWinCondition()
     }
 
     p1Input = (index, multiplier, value)=>{
@@ -88,9 +90,67 @@ class Cricket extends Component {
 
     }
 
+    checkWinCondition = ()=>{
+        let p1Marks = this.getMarks(this.state.p1)
+        let p1Score = this.getScore(this.state.p1)
+        let p2Marks = this.getMarks(this.state.p2)
+        let p2Score = this.getScore(this.state.p2)
+
+        if(p1Marks === 21 && p1Score >= p2Score){
+            alert("p1 wins")
+            this.setState({result:this.props.state.player1.p1_id})
+        }
+        if(p2Marks === 21 && p2Score >= p1Score){
+            alert("p2 Wins")
+            this.setState({result:this.props.state.player2.p2_id})
+        }
+    }
+
+    getMarks = (arr)=>{
+        const reducer = (accumulator, currentvalue)=> accumulator + currentvalue
+        let newArr = []
+        arr.forEach(el=>{newArr.push(el.marks)})
+        let marks = newArr.reduce(reducer)
+        return marks
+    }
+
+    getScore = (arr)=>{
+        const reducer = (accumulator, currentvalue)=> accumulator + currentvalue
+        let newArr = []
+        arr.forEach(el=>{newArr.push(el.score)})
+        let score = newArr.reduce(reducer)
+        return score
+    }
+
+    createGameInstance = ()=>{
+            let newGame={
+                game_type: "This is a test",
+                p1_id: this.props.state.player1.p1_id,
+                p2_id: this.props.state.player2.p2_id,
+                result: this.state.result
+            }
+            return newGame
+    }
 
     exportResults = ()=>{
-        cricketGameDetail(this.state.p1)
+        if(this.props.state.player1.loggedIn || this.props.state.player2.loggedIn){
+            let game = this.createGameInstance()
+         newGame(game)
+            .then(game_id => {
+                if(this.props.state.player1.loggedIn){
+                    let gameData = {
+                        "id":"",
+                        "user_id": this.props.state.player1.p1_id,
+                        "game_id": game_id[0].id
+                    }
+                    let copy = JSON.stringify(this.state.p1)
+                    let obj = JSON.parse(copy)
+                    obj.unshift(gameData)
+                    console.log(obj)
+                    cricketGameDetail(obj)
+                }
+            })
+        }
     }
 
     render(){

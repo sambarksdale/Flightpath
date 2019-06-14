@@ -7,7 +7,7 @@ router.route('/cricket/details').post((req,res)=>{
     detailValues = cricketApi.parseGameDetailValues(req.body)
     console.log(detailKeys)
     console.log(detailValues)
-    // cricketApi.newGameDetails(detailKeys, detailValues)
+    cricketApi.newGameDetails(detailKeys, detailValues)
 })
 
 module.exports = router;

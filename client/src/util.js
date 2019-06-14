@@ -14,10 +14,6 @@ export function cricketGameDetail(data){
   return axios.post('/cricket/details', data)
 }
 
-export function getGamesByUser(id){
-  return axios.post('/games', id)  
-}
-
 export function authenticateUser(user){
   return axios.post('/users/auth',user)
     .then(user=>user.data)
@@ -26,5 +22,16 @@ export function authenticateUser(user){
 export function newUser(user){
   return axios.post('/users', user)
     .then(user=>user.data)
+}
+
+export function newGame(game){
+  console.log(game)
+  return axios.post('/games', game)
+    .then(game_id=> game_id.data)
+}
+
+export function getTableData(user_id){
+  return axios.post('/games/table', user_id)
+    .then(tableData=>tableData.data)
 }
 

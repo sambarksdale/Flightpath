@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import './Login.css'
 
 class Login extends Component {
 
@@ -15,42 +13,25 @@ class Login extends Component {
         this.props.userLogin(user,this.props.player.p1_userName)
     }
 
-    render(){
-        const useStyles = makeStyles(theme => ({
-
-            textField: {
-              marginLeft: theme.spacing(1),
-              marginRight: theme.spacing(1),
-              width: 200,
-            },
-            button: {
-                margin: theme.spacing(1),
-                color: 'purple',
-            },
-          }));
-          
+    render(){          
         return(
-            <form onSubmit={this.getUserData}>
+            <form onSubmit={this.getUserData} className="login-container">
                 <div>
-                    <TextField
-                        id="p1-login-username"
-                        label="Name"
-                        className={useStyles.textField}
-                        margin="normal"
-                    />
+                    <input type="text" id="p1-login-username" placeholder="username"></input>
                 </div>
                 <div>
-                    <TextField
-                        id="p1-login-password"
-                        label="Password"
-                        className={useStyles.textField}
-                        type="password"
-                        autoComplete="current-password"
-                        margin="normal"
-                    />
-                <div>
-                    <Button type="submit" variant="contained" color="primary" className={useStyles.button}>Submit</Button>
+                    <input type="password" id="p1-login-password"placeholder="password"></input>
                 </div>
+                <div>
+                    <button type="submit">Sign In</button>
+                    <div class="dropdown">
+                        <button class="dropbtn">Dropdown</button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="/user/1">Link 3</a>
+                        </div>
+                    </div>
                 </div>
             </form>
 

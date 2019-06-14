@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import {authenticateUser, newUser} from './util'
 import Cricket from './components/Cricket.js'
-import UserSelect from './components/UserSelect'
+import GameDetail from './components/GameDetail'
+import NavBar from './components/NavBar'
 import User from './components/User.js'
 
 class App extends Component {
@@ -11,12 +12,12 @@ class App extends Component {
   state = {
     player1: {
       p1_userName: "player 1",
-      p1_id: "",
-      loggedIn: false,
+      p1_id: 1,
+      loggedIn: true,
     },
     player2: {
       p2_userName: "player 2",
-      p2_id: "",
+      p2_id: null,
       loggedIn: false
     },
     gametype: "",
@@ -84,10 +85,11 @@ class App extends Component {
       <Router>
         <div className="App">
           <div>
-            <UserSelect userLogin={this.userLogin} userSignup={this.userSignup} player={this.state.player1}/>
+            <NavBar userLogin={this.userLogin} userSignup={this.userSignup} player={this.state.player1}/>
             <Switch>
-              <Route exact path="/cricket" render={CricketGame}/>
+              <Route exact path="/" render={CricketGame}/>
               <Route exact path="/user/:id" render={UserProfile}/>
+              <Route exact path='/user/:id/game/:game_id' component={GameDetail}/>
             </Switch>
           </div>
         </div>

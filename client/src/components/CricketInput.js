@@ -17,7 +17,6 @@ class CricketInput extends Component {
         this.incramentDartCount()
         let index = this.getIndex(value)
         this.props.state.isTurn ? this.props.p1Input(index, this.state.multiplier, value) : this.props.p2Input(index, this.state.multiplier, value)
-        // this.props.handleInput(index, this.state.multiplier, value)
         this.props.dartsThrown(this.state.multiplier, value, this.state.dartCount)
         this.setState({value:0,multiplier:1},()=>{this.props.takeSnapshot()});
     }
