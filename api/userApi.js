@@ -23,4 +23,14 @@ newUser = (username, password)=>{
     return client.query(queryString)
 }
 
-module.exports = { getUsers, getUserById, authenticateUser, getUserByUserName, newUser }
+editUser = (username, password, id)=>{
+    let queryString = `UPDATE users SET username = \'${username}\', password = \'${password}\' WHERE id = ${id} RETURNING id, username, password`
+    return client.query(queryString)
+}
+
+deleteUser = (id)=>{
+    let queryString = `DELETE FROM users WHERE id = ${id}`
+    return client.query(queryString)
+}
+
+module.exports = { getUsers, getUserById, authenticateUser, getUserByUserName, newUser, editUser, deleteUser }

@@ -19,15 +19,7 @@ class GamesTable extends Component {
     let id = {id:this.props.user.match.params.id}
     getTableData(id)
       .then(tableRows=>{
-        this.setState({tableRows},()=>{console.log(this.state.tableRows)})
-      })
-  }
-
-  func = ()=>{
-    let id = {id:this.props.user.match.params.id}
-    getTableData(id)
-      .then(tableRows=>{
-        this.setState({tableRows},()=>{console.log(this.state.tableRows)})
+        this.setState({tableRows})
       })
   }
 
@@ -46,29 +38,28 @@ class GamesTable extends Component {
     
     return (
       <div className="table-container">
-      <button onClick={this.func}></button>
-      <Paper className={useStyles.root}>
-      <Table className={useStyles.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell align="center">Game</TableCell>
-            <TableCell align="center">Opponent</TableCell>
-            <TableCell align="center">Result</TableCell>
-            <TableCell align="center">Detail</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {this.state.tableRows.map((row,index) => (
-            <TableRow key={index}>
-              <TableCell align="center">{row.game_type}</TableCell>
-              <TableCell align="center">{row.opponent}</TableCell>
-              <TableCell align="center">{row.result == this.props.user.match.params.id ? "Win" : "Loss"}</TableCell>
-              <TableCell align="center"><a href={`game/${row.game_id}`}>detail</a></TableCell>
+        <Paper className={useStyles.root}>
+        <Table className={useStyles.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center">Game</TableCell>
+              <TableCell align="center">Opponent</TableCell>
+              <TableCell align="center">Result</TableCell>
+              <TableCell align="center">Detail</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      </Paper>
+          </TableHead>
+          <TableBody>
+            {this.state.tableRows.map((row,index) => (
+              <TableRow key={index}>
+                <TableCell align="center">{row.game_type}</TableCell>
+                <TableCell align="center">{row.opponent}</TableCell>
+                <TableCell align="center">{row.result == this.props.user.match.params.id ? "Win" : "Loss"}</TableCell>
+                <TableCell align="center"><a href={`game/${row.game_id}`}>detail</a></TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        </Paper>
       </div>
       )
   }

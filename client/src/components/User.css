@@ -2,7 +2,8 @@
     display: block;
 }
 
-.game-table-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+.user-edit {
+    display: flex;
+    justify-content: space-between;
 }
+

@@ -24,6 +24,21 @@ export function newUser(user){
     .then(user=>user.data)
 }
 
+export function getUserById(id){
+  return axios.get(`/users/${id}`)
+    .then(user=>user.data)
+}
+
+export function updateUser(id, data){
+  return axios.put(`/users/${id}`, data)
+    .then(user=>user.data)
+}
+
+export function deleteUserById(id){
+  console.log("delete user")
+  return axios.delete(`/users/${id}`)
+}
+
 export function newGame(game){
   console.log(game)
   return axios.post('/games', game)

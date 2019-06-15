@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
-import {authenticateUser, newUser} from './util'
+import {authenticateUser, newUser, updateUser, deleteUserById} from './util'
 import Cricket from './components/Cricket.js'
 import GameDetail from './components/GameDetail'
 import NavBar from './components/NavBar'
@@ -39,10 +39,26 @@ class App extends Component {
     return newUser(data)
       .then(user=>{
         if (user === "failed"){alert("failed")}
-        else if(player === "player 1"){
-          this.setPLayer1(user)
-        }
+          else if(player === "player 1"){
+            this.setPLayer1(user)
+          }
       })
+  }
+
+  userEdit = (data)=>{
+    return updateUser(data.id, data)
+      .then(user=>{
+        if(user[0].id === this.state.player1.p1_id){
+          this.setState({p1_userName:user[0].username})
+          }else{
+            this.setState({p2_userName:user[0].username})
+          }
+      })
+  }
+
+  userDelete = (id)=>{
+    console.log("delete user")
+    deleteUserById(id)
   }
 
   setPLayer1 = (user)=>{
@@ -80,17 +96,21 @@ class App extends Component {
     />)
     const UserProfile = (props)=>(<User
       user={props}
+      userEdit={this.userEdit}
+      userDelete={this.userDelete}
     />)
     return (
       <Router>
         <div className="App">
           <div>
             <NavBar userLogin={this.userLogin} userSignup={this.userSignup} player={this.state.player1}/>
-            <Switch>
-              <Route exact path="/" render={CricketGame}/>
-              <Route exact path="/user/:id" render={UserProfile}/>
-              <Route exact path='/user/:id/game/:game_id' component={GameDetail}/>
-            </Switch>
+            <div>
+              <Switch>
+                <Route exact path="/" render={CricketGame}/>
+                <Route exact path="/user/:id" render={UserProfile}/>
+                <Route exact path='/user/:id/game/:game_id' component={GameDetail}/>
+              </Switch>
+            </div>
           </div>
         </div>
       </Router>
