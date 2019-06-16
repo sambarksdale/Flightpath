@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
-import {authenticateUser, newUser, updateUser, deleteUserById} from './util'
+import {authenticateUser, newUser, updateUser, deleteUserById, getRandomNumber} from './util'
 import Cricket from './components/Cricket.js'
 import GameDetail from './components/GameDetail'
 import NavBar from './components/NavBar'
@@ -12,13 +12,13 @@ class App extends Component {
   state = {
     player1: {
       p1_userName: "player 1",
-      p1_id: 1,
-      loggedIn: true,
+      p1_id: null,
+      loggedIn: false,
     },
     player2: {
       p2_userName: "player 2",
       p2_id: null,
-      loggedIn: false
+      loggedIn: false,
     },
     gametype: "",
     turnLog: []
@@ -30,7 +30,7 @@ class App extends Component {
         if (user === "failed"){alert("failed")}
         else if(player === "player 1"){
           this.setPLayer1(user)
-        }
+        } else {this.setPLayer2(user)}
 
       })
   }
@@ -41,16 +41,21 @@ class App extends Component {
         if (user === "failed"){alert("failed")}
           else if(player === "player 1"){
             this.setPLayer1(user)
-          }
+          } else {this.setPLayer2(user)}
       })
   }
 
   userEdit = (data)=>{
     return updateUser(data.id, data)
       .then(user=>{
+        console.log(user)
         if(user[0].id === this.state.player1.p1_id){
-          this.setState({p1_userName:user[0].username})
+          this.setPLayer1(user)
+          // console.log(user[0].username)
+          // this.setState({p1_userName:user[0].username}, ()=>{console.log(this.state.player1.p1_userName)})
           }else{
+            this.setPLayer2(user)
+            console.log("update player 2")
             this.setState({p2_userName:user[0].username})
           }
       })
@@ -102,15 +107,14 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+          <NavBar userLogin={this.userLogin} userSignup={this.userSignup} state={this.state}/>
+          <button onClick={()=>{getRandomNumber()}}>test number</button>
           <div>
-            <NavBar userLogin={this.userLogin} userSignup={this.userSignup} player={this.state.player1}/>
-            <div>
-              <Switch>
-                <Route exact path="/" render={CricketGame}/>
-                <Route exact path="/user/:id" render={UserProfile}/>
-                <Route exact path='/user/:id/game/:game_id' component={GameDetail}/>
-              </Switch>
-            </div>
+            <Switch>
+              <Route exact path="/" render={CricketGame}/>
+              <Route exact path="/user/:id" render={UserProfile}/>
+              <Route exact path='/user/:id/game/:game_id' component={GameDetail}/>
+            </Switch>
           </div>
         </div>
       </Router>

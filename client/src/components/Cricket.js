@@ -5,14 +5,14 @@ import CricketInput from './CricketInput'
 
 class Cricket extends Component {
     state = {
-        p1:[{id:20,marks:0,score:0},{id:19,marks:0,score:0},{id:18,marks:0,score:0},{id:17,marks:0,score:0},{id:16,marks:0,score:0},{id:15,marks:0,score:0},{id:25,marks:0,score:0}],
+        p1:[{id:20,marks:3,score:0},{id:19,marks:3,score:0},{id:18,marks:3,score:0},{id:17,marks:3,score:0},{id:16,marks:3,score:0},{id:15,marks:3,score:0},{id:25,marks:2,score:0}],
         p2:[{id:20,marks:0,score:0},{id:19,marks:0,score:0},{id:18,marks:0,score:0},{id:17,marks:0,score:0},{id:16,marks:0,score:0},{id:15,marks:0,score:0},{id:25,marks:0,score:0}],
         dart1: "",
         dart2: "",
         dart3: "",
         dartCout: 0,
         isTurn: true,
-        result: 1
+        result: null
     }
 
     componentDidMount(){
@@ -98,11 +98,13 @@ class Cricket extends Component {
 
         if(p1Marks === 21 && p1Score >= p2Score){
             alert("p1 wins")
-            this.setState({result:this.props.state.player1.p1_id})
+            this.setState({result:this.props.state.player1.p1_id},()=>{this.exportResults()})
+            this.resetState() 
         }
         if(p2Marks === 21 && p2Score >= p1Score){
-            alert("p2 Wins")
-            this.setState({result:this.props.state.player2.p2_id})
+            // alert("p2 Wins")
+            this.setState({result:this.props.state.player2.p2_id},()=>{this.exportResults()})
+            this.resetState() 
         }
     }
 
@@ -130,6 +132,17 @@ class Cricket extends Component {
                 result: this.state.result
             }
             return newGame
+    }
+
+    resetState = ()=>{
+        let p1 = [{id:20,marks:0,score:0},{id:19,marks:0,score:0},{id:18,marks:0,score:0},{id:17,marks:0,score:0},{id:16,marks:0,score:0},{id:15,marks:0,score:0},{id:25,marks:0,score:0}]
+        let p2 = [{id:20,marks:0,score:0},{id:19,marks:0,score:0},{id:18,marks:0,score:0},{id:17,marks:0,score:0},{id:16,marks:0,score:0},{id:15,marks:0,score:0},{id:25,marks:0,score:0}]
+        let dart1 = ""
+        let dart2 = ""
+        let dart3 = ""
+        let isTurn = true
+        let result = null
+        this.setState({p1:p1, p2:p2, dart1:dart1, dart2:dart2, dart3:dart3, isTurn:isTurn, result:result})
     }
 
     exportResults = ()=>{

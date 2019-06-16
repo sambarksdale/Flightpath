@@ -7,7 +7,6 @@ export function getUsers(){
 
 export function getRandomNumber(){
   return axios.post('/number')
-    .then(results => console.log(results.data))
 }
 
 export function cricketGameDetail(data){
@@ -35,7 +34,6 @@ export function updateUser(id, data){
 }
 
 export function deleteUserById(id){
-  console.log("delete user")
   return axios.delete(`/users/${id}`)
 }
 
