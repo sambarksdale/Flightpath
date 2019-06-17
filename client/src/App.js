@@ -113,8 +113,8 @@ class App extends Component {
 
   logoutPLayer2 = ()=>{
     let player2 = {
-      p1_userName: "player 2",
-      p1_id: 1,
+      p2_userName: "player 2",
+      p2_id: 1,
       loggedIn: false
     }
     this.setState({player2}, ()=>{console.log(this.state.player2)})
