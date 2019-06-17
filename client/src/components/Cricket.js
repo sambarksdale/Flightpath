@@ -5,7 +5,7 @@ import CricketInput from './CricketInput'
 
 class Cricket extends Component {
     state = {
-        p1:[{id:20,marks:3,score:0},{id:19,marks:3,score:0},{id:18,marks:3,score:0},{id:17,marks:3,score:0},{id:16,marks:3,score:0},{id:15,marks:3,score:0},{id:25,marks:2,score:0}],
+        p1:[{id:20,marks:0,score:0},{id:19,marks:0,score:0},{id:18,marks:0,score:0},{id:17,marks:0,score:0},{id:16,marks:0,score:0},{id:15,marks:0,score:0},{id:25,marks:0,score:0}],
         p2:[{id:20,marks:0,score:0},{id:19,marks:0,score:0},{id:18,marks:0,score:0},{id:17,marks:0,score:0},{id:16,marks:0,score:0},{id:15,marks:0,score:0},{id:25,marks:0,score:0}],
         dart1: "",
         dart2: "",
