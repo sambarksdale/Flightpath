@@ -7,7 +7,7 @@ export function getUsers(){
 
 export function getRandomNumber(){
   return axios.post('/number')
-    .then(result=>console.log(result.data))
+    .then(result=>result.data)
 }
 
 export function cricketGameDetail(data){

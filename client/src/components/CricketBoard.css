@@ -7,8 +7,20 @@
 }
 
 .name-plate {
-    font-size: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
+
+#p1-name-plate {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+#p2-name-plate {
+    grid-column-start: 4;
+    grid-column-end: 6;
+}
+
 .board-container div{
     height: 50px;
     font-size: 50px;
@@ -17,4 +29,9 @@
 
 .board-container img{
     height: 50px;
+}
+
+.board-center {
+    border-right: 3px solid black;
+    border-left: 3px solid black;
 }

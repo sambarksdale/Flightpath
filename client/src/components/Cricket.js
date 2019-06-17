@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {cricketGameDetail, newGame} from '../util'
+import {cricketGameDetail, newGame, getRandomNumber} from '../util'
 import CricketBoard from './CricketBoard'
 import CricketInput from './CricketInput'
 
@@ -29,7 +29,18 @@ class Cricket extends Component {
             document.getElementById("p1-name-plate").style.background = "white"
             document.getElementById("p2-name-plate").style.background = "red"
         }
-        // this.checkWinCondition()
+    }
+
+    randomTurnOne = ()=>{
+        getRandomNumber()
+            .then(number=>{
+                console.log(number)
+                if(number == 1){
+                    this.setState({isTurn:true})
+                }else {
+                    this.setState({isTurn:true})
+                }
+            })
     }
 
     p1Input = (index, multiplier, value)=>{
@@ -176,30 +187,6 @@ class Cricket extends Component {
             .then(game_id => {
                 this.p1Details(game_id)
                 this.p2Details(game_id)
-                // if(this.props.state.player1.loggedIn){
-                //     let gameData = {
-                //         "id":"",
-                //         "user_id": this.props.state.player1.p1_id,
-                //         "game_id": game_id[0].id
-                //     }
-                //     let copy = JSON.stringify(this.state.p1)
-                //     let obj = JSON.parse(copy)
-                //     obj.unshift(gameData)
-                //     console.log(obj)
-                //     cricketGameDetail(obj)
-                // }
-                // if(this.props.state.player2.loggedIn){
-                //     let gameData = {
-                //         "id":"",
-                //         "user_id": this.props.state.player2.p2_id,
-                //         "game_id": game_id[0].id
-                //     }
-                //     let copy = JSON.stringify(this.state.p2)
-                //     let obj = JSON.parse(copy)
-                //     obj.unshift(gameData)
-                //     console.log(obj)
-                //     cricketGameDetail(obj)
-                // }
             })
         }
     }
@@ -208,9 +195,8 @@ class Cricket extends Component {
         
         return(
             <div>
-                <CricketBoard state={this.state}/>
+                <CricketBoard state={this.state} randomTurnOne={this.randomTurnOne}/>
                 <CricketInput p1Input={this.p1Input} p2Input={this.p2Input} undoTurn={this.undoTurn} changeTurn={this.changeTurn} takeSnapshot={this.takeSnapshot} dartsThrown={this.dartsThrown} state={this.state}/>
-                <button onClick={this.exportResults}>try</button>
             </div>
         )
     }

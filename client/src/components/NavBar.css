@@ -1,6 +1,13 @@
 .navbar {
     height: 50px;
-    border: 1px solid black;
     display: flex;
     justify-content: space-between;
+}
+
+.player1 {
+    margin-top: 10px;
+}
+
+.player2 {
+    margin-top: 10px;
 }
