@@ -43,7 +43,7 @@ class UserSelect extends Component {
         const p2Forms = ()=>(<Formsp2
             state={this.state}
             p2ViewLogin={this.p2ViewLogin}
-            p1ViewSignup={this.p2ViewSignup}
+            p2ViewSignup={this.p2ViewSignup}
             userLogin={this.props.userLogin}
             userSignup={this.props.userSignup}
             player={this.props.state.player2}
@@ -62,7 +62,7 @@ class UserSelect extends Component {
                             <div onClick={this.getUserData} class="dropbtn">Menu</div>
                             <div class="dropdown-content">
                                 <Link to={`/user/${this.props.state.player1.p1_id}`}><div>edit user</div></Link>
-                                <a href="#">New User</a>
+                                <div onClick={()=>{this.props.p1Logout()}}>Logout</div>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@ class UserSelect extends Component {
                             <div onClick={this.getUserData} class="dropbtn">Menu</div>
                             <div class="dropdown-content">
                                 <Link to={`/user/${this.props.state.player2.p2_id}`}><div>edit user</div></Link>
-                                <a href="#">New User</a>
+                                <div onClick={()=>{this.props.p2Logout()}}>Logout</div>
                             </div>
                         </div>
                         <div>

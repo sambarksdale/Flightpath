@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Link} from 'react-router-dom'
 import {getUserById} from '../util'
 import './User.css'
 import GamesTable from './GamesTable';
@@ -61,7 +61,7 @@ class User extends Component {
             <button onClick={this.userUpdate}>save</button>
           </form>
           <div>
-            <button onClick={this.deleteUser}>Delete User</button>
+            <Link to='/' onClick={()=>{this.props.userDelete(this.props.user.match.params.id)}} ><div>Delete User</div></Link> 
           </div>
         </div>  
         <Switch>

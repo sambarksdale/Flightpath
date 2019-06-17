@@ -25,4 +25,9 @@ newGameDetails = (keys, values) => {
     return client.query(`INSERT INTO cricket_details (${keys}) VALUES (${values})`)
 }
 
-module.exports = {parseGameDetailKeys, parseGameDetailValues, newGameDetails}
+getDetailsByGameId = (id) => {
+    queryString = `SELECT * FROM cricket_details WHERE game_id = ${id}`
+    return client.query(queryString)
+}
+
+module.exports = {parseGameDetailKeys, parseGameDetailValues, newGameDetails, getDetailsByGameId}

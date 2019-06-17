@@ -29,7 +29,7 @@ class Cricket extends Component {
             document.getElementById("p1-name-plate").style.background = "white"
             document.getElementById("p2-name-plate").style.background = "red"
         }
-        this.checkWinCondition()
+        // this.checkWinCondition()
     }
 
     p1Input = (index, multiplier, value)=>{
@@ -41,7 +41,7 @@ class Cricket extends Component {
                     array[index].score = array[index].score += value
                     }
         }
-        this.setState({p1:array}, ()=>{console.log(this.state)})
+        this.setState({p1:array},()=>{this.checkWinCondition()})
     }
 
     p2Input = (index, multiplier, value)=>{
@@ -53,7 +53,7 @@ class Cricket extends Component {
                     array[index].score = array[index].score += value
                     }
         }
-        this.setState({p2:array},()=>{console.log(this.state)})
+        this.setState({p2:array},()=>{this.checkWinCondition()})
     }
 
     dartsThrown = (multiplier, value, dartCount)=>{
@@ -97,14 +97,12 @@ class Cricket extends Component {
         let p2Score = this.getScore(this.state.p2)
 
         if(p1Marks === 21 && p1Score >= p2Score){
+            this.exportResults(this.props.state.player1.p1_id, ()=>{this.resetState()})
             alert("p1 wins")
-            this.setState({result:this.props.state.player1.p1_id},()=>{this.exportResults()})
-            this.resetState() 
         }
         if(p2Marks === 21 && p2Score >= p1Score){
-            // alert("p2 Wins")
-            this.setState({result:this.props.state.player2.p2_id},()=>{this.exportResults()})
-            this.resetState() 
+            this.exportResults(this.props.state.player2.p2_id, ()=>{this.resetState()})
+            alert("p2 Wins")
         }
     }
 
@@ -124,12 +122,12 @@ class Cricket extends Component {
         return score
     }
 
-    createGameInstance = ()=>{
+    createGameInstance = (winner)=>{
             let newGame={
-                game_type: "This is a test",
+                game_type: "Cricket",
                 p1_id: this.props.state.player1.p1_id,
                 p2_id: this.props.state.player2.p2_id,
-                result: this.state.result
+                result: winner
             }
             return newGame
     }
@@ -145,23 +143,63 @@ class Cricket extends Component {
         this.setState({p1:p1, p2:p2, dart1:dart1, dart2:dart2, dart3:dart3, isTurn:isTurn, result:result})
     }
 
-    exportResults = ()=>{
+    p1Details = (game_id)=>{
+        let gameData = {
+            "id":"",
+            "user_id": this.props.state.player1.p1_id,
+            "game_id": game_id[0].id
+        }
+        let copy = JSON.stringify(this.state.p1)
+        let obj = JSON.parse(copy)
+        obj.unshift(gameData)
+        console.log(obj)
+        cricketGameDetail(obj)
+    }
+
+    p2Details = (game_id)=>{
+        let gameData = {
+            "id":"",
+            "user_id": this.props.state.player2.p2_id,
+            "game_id": game_id[0].id
+        }
+        let copy = JSON.stringify(this.state.p2)
+        let obj = JSON.parse(copy)
+        obj.unshift(gameData)
+        console.log(obj)
+        cricketGameDetail(obj)
+    }
+
+    exportResults = (result)=>{
         if(this.props.state.player1.loggedIn || this.props.state.player2.loggedIn){
-            let game = this.createGameInstance()
+            let game = this.createGameInstance(result)
          newGame(game)
             .then(game_id => {
-                if(this.props.state.player1.loggedIn){
-                    let gameData = {
-                        "id":"",
-                        "user_id": this.props.state.player1.p1_id,
-                        "game_id": game_id[0].id
-                    }
-                    let copy = JSON.stringify(this.state.p1)
-                    let obj = JSON.parse(copy)
-                    obj.unshift(gameData)
-                    console.log(obj)
-                    cricketGameDetail(obj)
-                }
+                this.p1Details(game_id)
+                this.p2Details(game_id)
+                // if(this.props.state.player1.loggedIn){
+                //     let gameData = {
+                //         "id":"",
+                //         "user_id": this.props.state.player1.p1_id,
+                //         "game_id": game_id[0].id
+                //     }
+                //     let copy = JSON.stringify(this.state.p1)
+                //     let obj = JSON.parse(copy)
+                //     obj.unshift(gameData)
+                //     console.log(obj)
+                //     cricketGameDetail(obj)
+                // }
+                // if(this.props.state.player2.loggedIn){
+                //     let gameData = {
+                //         "id":"",
+                //         "user_id": this.props.state.player2.p2_id,
+                //         "game_id": game_id[0].id
+                //     }
+                //     let copy = JSON.stringify(this.state.p2)
+                //     let obj = JSON.parse(copy)
+                //     obj.unshift(gameData)
+                //     console.log(obj)
+                //     cricketGameDetail(obj)
+                // }
             })
         }
     }

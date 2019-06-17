@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import { getTableData } from '../util'
 import Table from '@material-ui/core/Table';
@@ -19,7 +20,7 @@ class GamesTable extends Component {
     let id = {id:this.props.user.match.params.id}
     getTableData(id)
       .then(tableRows=>{
-        this.setState({tableRows})
+        this.setState({tableRows}, ()=>{console.log(this.state.tableRows)})
       })
   }
 
@@ -54,7 +55,7 @@ class GamesTable extends Component {
                 <TableCell align="center">{row.game_type}</TableCell>
                 <TableCell align="center">{row.opponent}</TableCell>
                 <TableCell align="center">{row.result == this.props.user.match.params.id ? "Win" : "Loss"}</TableCell>
-                <TableCell align="center"><a href={`game/${row.game_id}`}>detail</a></TableCell>
+                <TableCell align="center"><Link to={`/user/${this.props.user.match.params.id}/game/${row.game_id}`}>detail</Link></TableCell>
               </TableRow>
             ))}
           </TableBody>

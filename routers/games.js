@@ -18,6 +18,7 @@ router
     })
 
 router.route('/games/table').post((req,res)=>{
+    
     gameApi.getTableData(req.body.id)
         .then(games=>{res.json(games.rows)})
 })

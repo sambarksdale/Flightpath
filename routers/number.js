@@ -2,22 +2,24 @@ const express = require('express')
 const axios = require('axios')
 const router = express.Router()
 
+const apiKey = process.env.API_KEY
+
 router.post('/number', (req,res) => {
-    axios.post('https://api.random.org/json-rpc/1/invoke', {
+    let data ={
         "jsonrpc": "2.0",
         "method": "generateIntegers",
         "params": {
-            "apiKey": "d70ec30e-8eeb-4c72-ab8c-3ad7749908e1",
+            "apiKey": `${apiKey}`,
             "n": 1,
             "min": 1,
             "max": 2,
             "replacement": true
         },
         "id": 1
-    }).then((data) => {
-        res.json(data.data.result.random.data)
-        console.log(data.data.result.random.data)
-    })
+    }
+    axios.post('https://api.random.org/json-rpc/2/invoke', data, {headers:{'Content-Type': 'application/json',}})
+        .then((results)=>{console.log(results.data.result)})  
 })
+
 
 module.exports = router;

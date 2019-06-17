@@ -13,6 +13,11 @@ export function cricketGameDetail(data){
   return axios.post('/cricket/details', data)
 }
 
+export function getDetails(game_id){
+  return axios.get(`/cricket/details/${game_id}`)
+    .then(results=>results.data)
+}
+
 export function authenticateUser(user){
   return axios.post('/users/auth',user)
     .then(user=>user.data)
