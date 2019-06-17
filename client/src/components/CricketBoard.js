@@ -6,11 +6,11 @@ class CricketBoard extends Component {
     render(){
         return(
             <div className="board-container">
-                <div>adf</div>
-                <div id="p1-name-plate">PLAYER </div>
+                <div className="name-plate" id="p1-name-plate">PLAYER </div>
+                <div> </div>
                 <div>CRICKET</div>
-                <div id="p2-name-plate">PLAYER </div>
-                <div>asdf</div>
+                <div></div>
+                <div className="name-plate" id="p2-name-plate">PLAYER 2</div>
 
                 <div>{this.props.state.p1[0].score > 0 ? `${this.props.state.p1[0].score}` : null }</div>
                 <div>{this.props.state.p1[0].marks > 0 ? <img alt="" src={'images/' + this.props.state.p1[0].marks + ".png"}/> : null}</div>

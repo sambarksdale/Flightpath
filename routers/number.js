@@ -18,7 +18,7 @@ router.post('/number', (req,res) => {
         "id": 1
     }
     axios.post('https://api.random.org/json-rpc/2/invoke', data, {headers:{'Content-Type': 'application/json',}})
-        .then((results)=>res.json(results.data.result))  
+        .then((results)=>res.json(results.data.result.random.data[0]))  
 })
 
 
