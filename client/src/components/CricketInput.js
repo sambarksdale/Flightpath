@@ -21,6 +21,12 @@ class CricketInput extends Component {
         this.setState({value:0,multiplier:1},()=>{this.props.takeSnapshot()});
     }
 
+    score0 = ()=>{
+        if(this.state.dartCount === 3){return}
+        this.incramentDartCount()
+        this.props.dartsThrown(this.state.multiplier, 0, this.state.dartCount)
+    }
+
     passTurn = ()=>{
         this.props.changeTurn()
         this.setState({dartCount:0})
@@ -37,25 +43,18 @@ class CricketInput extends Component {
         switch(value){
             case 20:
                 return 0
-                // break;
             case 19:
                 return 1
-                // break;
             case 18:
                 return 2
-                // break;
             case 17:
                 return 3
-                // break;
             case 16:
                 return 4
-                // break;
             case 15:
                 return 5
-                // break;
             case 25:
                 return 6
-                // break;
         } 
     }
     render(){
@@ -68,7 +67,7 @@ class CricketInput extends Component {
                 <div onClick={()=>{this.userInput(16)}}>16</div>
                 <div onClick={()=>{this.userInput(15)}}>15</div>
                 <div onClick={()=>{this.userInput(25)}}>Bull</div>
-                <div>0</div>
+                <div onClick={()=>{this.score0()}}>0</div>
                 <div onClick={this.undo}>undo</div>
                 <div onClick={()=>{this.setState({multiplier: 2})}}>2x</div>
                 <div onClick={()=>{this.setState({multiplier: 3})}}>3x</div>

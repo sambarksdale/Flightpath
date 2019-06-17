@@ -83,7 +83,7 @@ class App extends Component {
     player2.p2_userName = username
     player2.p2_id = id
     player2.loggedIn = true
-    this.setState({player2})
+    this.setState({player2}, ()=>{console.log(this.state.player2)})
   }
 
   updateTurnLog = (snapshot)=>{
@@ -108,7 +108,7 @@ class App extends Component {
       p1_id: 1,
       loggedIn: false
     }
-    this.setState({player1})
+    this.setState({player1}, ()=>{console.log(this.state.player1)})
   }
 
   logoutPLayer2 = ()=>{
@@ -117,7 +117,7 @@ class App extends Component {
       p1_id: 1,
       loggedIn: false
     }
-    this.setState({player2})
+    this.setState({player2}, ()=>{console.log(this.state.player2)})
   }
 
 
@@ -139,7 +139,6 @@ class App extends Component {
       <Router>
         <div className="App">
           <NavBar userLogin={this.userLogin} userSignup={this.userSignup} state={this.state} p1Logout={this.logoutPLayer1} p2Logout={this.logoutPLayer2}/>
-          <button onClick={()=>{getRandomNumber()}}>test number</button>
           <div>
             <Switch>
               <Route exact path="/" render={CricketGame}/>

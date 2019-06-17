@@ -56,13 +56,13 @@ class UserSelect extends Component {
                     this.props.state.player1.loggedIn ?
                     <div className="login-container">
                         <div>
-                            <div>Logged in as:{this.props.state.player1.p1_userName}</div>
+                            <div>Logged in as: {this.props.state.player1.p1_userName}</div>
                         </div>
                         <div class="dropdown">
                             <div onClick={this.getUserData} class="dropbtn">Menu</div>
                             <div class="dropdown-content">
                                 <Link to={`/user/${this.props.state.player1.p1_id}`}><div>edit user</div></Link>
-                                <div onClick={()=>{this.props.p1Logout()}}>Logout</div>
+                                <Link to='/' onClick={()=>{this.props.p1Logout()}}><div>Logout</div></Link>
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@ class UserSelect extends Component {
                 </div>
 
                 <Link to={`/`}>
-                    <div>PLay Cricket</div>
+                    <div className="play-btn">PLay Cricket</div>
                 </Link>
 
                 <div className="player2">
@@ -85,11 +85,11 @@ class UserSelect extends Component {
                             <div onClick={this.getUserData} class="dropbtn">Menu</div>
                             <div class="dropdown-content">
                                 <Link to={`/user/${this.props.state.player2.p2_id}`}><div>edit user</div></Link>
-                                <div onClick={()=>{this.props.p2Logout()}}>Logout</div>
+                                <Link to='/' onClick={()=>{this.props.p2Logout()}}><div>Logout</div></Link>
                             </div>
                         </div>
                         <div>
-                            <div>Logged in as:{this.props.state.player2.p2_userName}</div>
+                            <div>Logged in as: {this.props.state.player2.p2_userName}</div>
                         </div>
                         
                     </div>

@@ -5,3 +5,17 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 3px;
 }
+
+.input-container div {
+    background: lightgray;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bolder;
+    padding: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.input-container div:hover {
+    background: darkgray;
+}

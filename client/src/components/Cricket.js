@@ -35,11 +35,9 @@ class Cricket extends Component {
         getRandomNumber()
             .then(number=>{
                 if(number == 1){
-                    console.log("player 1")
-                    this.setState({isTurn:true}, ()=>{console.log(this.state.isTurn)})
+                    this.setState({isTurn:true}, ()=>{alert("player 1 starts")})
                 }else {
-                    console.log("player 2")
-                    this.setState({isTurn:false}, ()=>{console.log(this.state.isTurn)})
+                    this.setState({isTurn:false}, ()=>{alert("player 2 starts")})
                 }
             })
     }
@@ -184,8 +182,9 @@ class Cricket extends Component {
     exportResults = (result)=>{
         if(this.props.state.player1.loggedIn || this.props.state.player2.loggedIn){
             let game = this.createGameInstance(result)
-         newGame(game)
+         newGame(game, ()=>{console.log(game)})
             .then(game_id => {
+                console.log(game_id)
                 this.p1Details(game_id)
                 this.p2Details(game_id)
             })

@@ -4,11 +4,12 @@
     width: 800px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 15px;
 }
 
 .name-plate {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 3px solid black;
 }
 
 #p1-name-plate {
@@ -33,5 +34,18 @@
 
 .board-center {
     border-right: 3px solid black;
+    border-left: 3px solid black;
+}
+
+.board-container .dart-display {
+    font-size: 16px;
+    font-weight: bold
+}
+
+.right-mark {
+    border-right: 3px solid black;
+}
+
+.left-mark {
     border-left: 3px solid black;
 }
