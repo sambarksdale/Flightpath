@@ -34,11 +34,12 @@ class Cricket extends Component {
     randomTurnOne = ()=>{
         getRandomNumber()
             .then(number=>{
-                console.log(number)
                 if(number == 1){
-                    this.setState({isTurn:true})
+                    console.log("player 1")
+                    this.setState({isTurn:true}, ()=>{console.log(this.state.isTurn)})
                 }else {
-                    this.setState({isTurn:true})
+                    console.log("player 2")
+                    this.setState({isTurn:false}, ()=>{console.log(this.state.isTurn)})
                 }
             })
     }
