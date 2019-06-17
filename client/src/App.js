@@ -52,7 +52,6 @@ class App extends Component {
           this.setPLayer1(user)
           }else{
             this.setPLayer2(user)
-            this.setState({p2_userName:user[0].username})
           }
       })
   }
