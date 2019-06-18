@@ -49,3 +49,7 @@
 .left-mark {
     border-left: 3px solid black;
 }
+
+#random-number {
+    cursor: pointer;
+}

@@ -14,7 +14,7 @@ class CricketBoard extends Component {
 
                     <div></div>
                     <div> </div>
-                    <div className="board-center" onClick={()=>{this.props.randomTurnOne()}}>CRICKET</div>
+                    <div id="random-number" className="board-center" onClick={()=>{this.props.randomTurnOne()}}>CRICKET</div>
                     <div></div>
                     <div></div>
 
