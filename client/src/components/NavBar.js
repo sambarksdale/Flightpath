@@ -74,7 +74,7 @@ class UserSelect extends Component {
                 </div>
 
                 <Link to={`/`}>
-                    <div className="play-btn">PLay Cricket</div>
+                    <div className="play-btn">Play Cricket</div>
                 </Link>
 
                 <div className="player2">
