@@ -25,6 +25,7 @@ class CricketInput extends Component {
         if(this.state.dartCount === 3){return}
         this.incramentDartCount()
         this.props.dartsThrown(this.state.multiplier, 0, this.state.dartCount)
+        this.setState({value:0,multiplier:1},()=>{this.props.takeSnapshot()});
     }
 
     passTurn = ()=>{
